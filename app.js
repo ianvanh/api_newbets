@@ -35,8 +35,7 @@ app.get('/fixture/:id', async (req, res) => {
   const matchId = req.params.id;
   try {
     const response = await axios.get(`${BASE_URL}/fixtures/${matchId}`, {
-      headers: HEADERS,
-      timeout: TIMEOUT
+      headers: HEADERS
     });
     res.json({ success: true, data: response.data });
   } catch (error) {
