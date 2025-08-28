@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 const BASE_URL = 'https://api.betmines.com/betmines/v1';
 
@@ -21,8 +21,7 @@ const TIMEOUT = 20000;
 app.get('/fixtures', async (req, res) => {
   try {
     const response = await axios.get(`${BASE_URL}/fixtures`, {
-      headers: HEADERS,
-      timeout: TIMEOUT
+      headers: HEADERS
     });
     res.json({ success: true, data: response.data });
   } catch (error) {
@@ -44,6 +43,6 @@ app.get('/fixture/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor escuchando en http://0.0.0.0:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Server on port: ${PORT}`);
 });
